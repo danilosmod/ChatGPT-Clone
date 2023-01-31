@@ -1,3 +1,7 @@
+.chat-title{
+    margin-top: 150px;
+}
+
 .chat-options-grid {
     display: grid;
     grid-template-columns: auto auto;

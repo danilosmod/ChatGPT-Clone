@@ -4,6 +4,7 @@ import "./Translation.css";
 export default function Translation({ showInfo, setInput, answer }) {
   return (
     <div className="text-area-container">
+      <h2 className="chat-title">Exemplos de uso do Chat GPT</h2>
       <textarea
         className="text-area"
         cols="50"

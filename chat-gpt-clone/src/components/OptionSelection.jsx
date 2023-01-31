@@ -4,7 +4,7 @@ import "./OptionSelection.css";
 export default function OptionSelection({ arrayItems, selectOption }) {
   return (
     <>
-      <h2>Chat GPT</h2>
+      <h2 className="chat-title">Exemplos de uso do Chat GPT</h2>
       <div className="chat-options-grid">
         {arrayItems.map((item) => {
           return (
