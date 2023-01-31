@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import OptionSelection from "./components/OptionSelection";
+import Translation from "./components/Translation";
+import { arrayItems } from "./AIOptions";
 import "./App.css";
 
 function App() {
   const [prompt, setPrompt] = useState("");
   const [result, setResult] = useState("");
+  const [option, setOption] = useState({});
+  const [answer, setAnswer] = useState("");
+  const [input, setInput] = useState("");
   const configuration = new Configuration({
     apiKey: import.meta.env.VITE_Open_AI_KEY,
   });
-
   const openai = new OpenAIApi(configuration);
 
   const generateImage = async () => {
@@ -21,6 +25,18 @@ function App() {
 
     setResult(res.data.data[0].url);
   };
+
+  const selectOption = (option) => {
+    setOption(option);
+  };
+
+  const showInfo = async () => {
+    let object = { ...option, prompt: input };
+
+    const response = await openai.createCompletion(object);
+    setAnswer(response.data.choices[0].text);
+  };
+
   return (
     <>
       <div className="app-image">
@@ -37,7 +53,11 @@ function App() {
           <></>
         )}
       </div>
-      <OptionSelection />
+      {Object.values(option).length === 0 ? (
+        <OptionSelection arrayItems={arrayItems} selectOption={selectOption} />
+      ) : (
+        <Translation showInfo={showInfo} setInput={setInput} answer={answer} />
+      )}
     </>
   );
 }

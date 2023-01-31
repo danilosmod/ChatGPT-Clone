@@ -1,0 +1,27 @@
+.chat-options-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 15px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.chat-options-grid-child {
+    border: 2px solid rgb(26, 26, 26);
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.chat-options-grid-child:hover {
+    background-color: #262626;
+    color: whitesmoke;
+}
+
+.chat-options-grid-child h3 {
+    font-weight: 700;
+}
+
+.chat-options-grid-child p {
+    font-weight: 500;
+    font-size: 16px;
+}
